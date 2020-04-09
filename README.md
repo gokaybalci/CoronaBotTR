@@ -4,6 +4,6 @@
 
 ## What you will need
 
-python-telegram-bot
-requests
+-python-telegram-bot
+-requests
 
