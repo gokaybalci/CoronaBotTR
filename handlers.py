@@ -21,16 +21,16 @@ def assert_args_and_send(update, context, message, target_args=0):
     send_message_chunked(update, context, message)
 
 def giris_handler(update, context):
-    GRS_MSG = "Corona Telegram botuna hoşgeldiniz.\nBilgi için /yardim yazınız."
+    GRS_MSG = "🇹🇷 Corona Telegram botuna hoşgeldiniz.\nBilgi için /yardim yazınız."
 
     assert_args_and_send(update, context, GRS_MSG)
 
 def yardim_handler(update, context):
     YRD_MSG = """Aşağıdaki komutlarla bilgilere erişebilirsiniz:
-    /rakam - Toplam vaka, ölüm ve iyileşme sayılarını gösterir.
-    /vaka - Toplam vaka sayısını gösterir.
-    /iyilesen - Toplam iyileşen sayısını gösterir.
-    /olum - Toplam ölüm sayısını gösterir."""
+    /rakam - 🧍 Toplam vaka, ölüm ve iyileşme sayılarını gösterir.
+    /vaka - 🦠 Toplam vaka sayısını gösterir.
+    /iyilesen - 💉 Toplam iyileşen sayısını gösterir.
+    /olum - 💀 Toplam ölüm sayısını gösterir."""
 
     assert_args_and_send(update, context, YRD_MSG)
 
