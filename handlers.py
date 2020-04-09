@@ -15,9 +15,9 @@ def send_message_chunked(update, context, message):
         context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 def assert_args_and_send(update, context, message, target_args=0):
-    if(len(context.args) != target_args):
-        send_message_chunked(update, context, "Error: Refer to /help.")
-        return False
+    #if(len(context.args) != target_args):
+    #    send_message_chunked(update, context, "Error: Refer to /help.")
+    #    return False
     send_message_chunked(update, context, message)
 
 def giris_handler(update, context):
@@ -27,7 +27,7 @@ def giris_handler(update, context):
 
 def yardim_handler(update, context):
     YRD_MSG = """Aşağıdaki komutlarla bilgilere erişebilirsiniz:
-    /rakam - 🧍 Toplam vaka, ölüm ve iyileşme sayılarını gösterir.
+    /rakam - 🚑 Toplam vaka, ölüm ve iyileşme sayılarını gösterir.
     /vaka - 🦠 Toplam vaka sayısını gösterir.
     /iyilesen - 💉 Toplam iyileşen sayısını gösterir.
     /olum - 💀 Toplam ölüm sayısını gösterir."""
@@ -35,13 +35,13 @@ def yardim_handler(update, context):
     assert_args_and_send(update, context, YRD_MSG)
 
 def vaka_handler(update, context):
-    assert_args_and_send(update, context, parse_api_data(coronaapi.fetch_vaka(context.args[0].lower()), "confirmed"), target_args=1)
+    assert_args_and_send(update, context, parse_api_data(coronaapi.fetch_vaka(), "kişi hastalığa yakalandı"), target_args=1)
 
 def iyilesen_handler(update, context):
-    assert_args_and_send(update, context, parse_api_data(coronaapi.fetch_iyilesen(context.args[0].lower()), "recovered"), target_args=1)
+    assert_args_and_send(update, context, parse_api_data(coronaapi.fetch_iyilesen(), "kişi hastalığı atlattı"), target_args=1)
 
 def olum_handler(update, context):
-    assert_args_and_send(update, context, parse_api_data(coronaapi.fetch_olum(context.args[0].lower()), "deaths"),target_args=1)
+    assert_args_and_send(update, context, parse_api_data(coronaapi.fetch_olum(), "kişi öldü"),target_args=1)
 
 def rakam_handler(update, context):
     vaka_handler(update, context)
