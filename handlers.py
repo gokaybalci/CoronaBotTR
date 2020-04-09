@@ -15,9 +15,6 @@ def send_message_chunked(update, context, message):
         context.bot.send_message(chat_id=update.effective_chat.id, text=text)
 
 def assert_args_and_send(update, context, message, target_args=0):
-    #if(len(context.args) != target_args):
-    #    send_message_chunked(update, context, "Error: Refer to /help.")
-    #    return False
     send_message_chunked(update, context, message)
 
 def giris_handler(update, context):
