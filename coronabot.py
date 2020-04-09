@@ -5,7 +5,7 @@ from telegram.ext import Updater
 from telegram.ext import CommandHandler
 
 # Create an updater
-updater = Updater(token='1246378270:AAE7ynrQYZ3C3tlHAghL-mjWH-mj7wbnkZE', use_context=True)
+updater = Updater(token='TOKEN HERE', use_context=True)
 
 # Expose the dispatcher locally
 dispatcher = updater.dispatcher
