@@ -2,28 +2,9 @@ import requests
 
 BASE_URL = "https://api.covid19api.com"
 
-COUNTRIES_ENDPOINT = "/countries"
-SUMMARY_ENDPOINT = "/summary"
-CONFIRMED_ENDPOINT = "/total/country/{country}/status/confirmed"
-RECOVERED_ENDPOINT = "/total/country/{country}/status/recovered"
-DEATHS_ENDPOINT = "/total/country/{country}/status/deaths"
-
-def fetch_countries():
-    """
-    Returns a list of all countries.
-    """
-
-    country_data = make_request(COUNTRIES_ENDPOINT)
-
-    try:
-        countries = ""
-        
-        for c in country_data:
-            countries += c["Slug"] + ","
-
-        return countries[:-1]
-    except:
-        return country_data 
+VAKA = "/total/country/turkey/status/confirmed"
+IYILESEN = "/total/country/turkey/status/recovered"
+OLUM = "/total/country/turkey/status/deaths"
 
 def build_url(endpoint):
     """
@@ -51,43 +32,14 @@ def make_request(url, parameters = None):
 
     return data
 
-COUNTRY_DATA = fetch_countries()
+def fetch_vaka():
 
+    return make_request(VAKA)
 
-def assert_country(country):
-    """
-    Asserts that the country provided is valid, meaning it is among the country slugs provided by the API. 
-    """
-    
-    valid = False
+def fetch_iyilesen():
 
-    for c in COUNTRY_DATA.split(','):
-        if c == country:
-            valid = True
-            break
-    
-    return valid
+    return make_request(IYILESEN)
 
-def fetch_confirmed(country):
-    """
-    Returns the total confirmed cases of a country. 
-    """
-    if(assert_country(country)):
-        return make_request(CONFIRMED_ENDPOINT.format(country=country))
+def fetch_olum():
 
-    return "Error: Invalid Country"
-def fetch_recovered(country):
-    """
-    Returns the total recovered cases of a country. 
-    """
-    if(assert_country(country)):
-        return make_request(RECOVERED_ENDPOINT.format(country=country))
-    return "Error: Invalid Country"
-
-def fetch_deaths(country):
-    """
-    Returns the total death cases of a country. 
-    """
-    if(assert_country(country)):
-        return make_request(DEATHS_ENDPOINT.format(country=country))
-    return "Error: Invalid Country"
+    return make_request(OLUM)

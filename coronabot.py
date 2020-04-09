@@ -15,10 +15,10 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 # Create a list of all handlers
 handlers = {
-    "start": handlers.giris_handler,
+    "giris": handlers.giris_handler,
     "yardim" : handlers.yardim_handler,
     "vaka" : handlers.vaka_handler,
-    "iyilesme" : handlers.iyilesme_handler,
+    "iyilesen" : handlers.iyilesen_handler,
     "olum" : handlers.olum_handler,
     "rakam": handlers.rakam_handler
 }
